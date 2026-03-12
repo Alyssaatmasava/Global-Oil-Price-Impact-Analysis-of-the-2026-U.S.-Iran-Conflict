@@ -1,0 +1,15 @@
+Country,ISO,Region,Currency,Before_War_Price,Mar7_Price,Unit,Amount_Change,Pct_Increase,Trend,Before_War_USD,Mar7_USD,Oil_Import_Dep
+Pakistan,PAK,South Asia,PKR,266.17,321.17,PKR/L,55.0,20.66,Increase,0.95,1.15,High
+India,IND,South Asia,INR,94.77,94.77,INR/L,0.0,0.0,Stable,1.14,1.14,High
+Bangladesh,BGD,South Asia,BDT,125.0,130.0,BDT/L,5.0,4.0,Increase,1.02,1.06,High
+Afghanistan,AFG,South Asia,AFN,57.0,57.0,AFN/L,0.0,0.0,Stable,0.82,0.82,High
+Nepal,NPL,South Asia,NPR,186.0,190.0,NPR/L,4.0,2.15,Increase,1.4,1.43,High
+Sri Lanka,LKA,South Asia,LKR,365.0,370.0,LKR/L,5.0,1.37,Increase,1.2,1.22,High
+Turkey,TUR,Europe/Asia,TRY,41.0,43.0,TRY/L,2.0,4.88,Increase,1.13,1.19,High
+Iran,IRN,Middle East,USD,0.3,0.32,USD/L,0.02,6.67,Increase,0.3,0.32,Low
+Saudi Arabia,SAU,Middle East,USD,0.62,0.66,USD/L,0.04,6.45,Increase,0.62,0.66,Low
+UAE,ARE,Middle East,USD,0.65,0.68,USD/L,0.03,4.62,Increase,0.65,0.68,Low
+China,CHN,East Asia,USD,1.2,1.26,USD/L,0.06,5.0,Increase,1.2,1.26,High
+United Kingdom,GBR,Europe,USD,1.78,1.85,USD/L,0.07,3.93,Increase,1.78,1.85,Medium
+Germany,DEU,Europe,USD,1.82,1.89,USD/L,0.07,3.85,Increase,1.82,1.89,Medium
+USA,USA,North America,USD,0.85,0.9,USD/L,0.05,5.88,Increase,0.85,0.9,Low
