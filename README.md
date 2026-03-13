@@ -6,7 +6,7 @@ An interactive data analysis dashboard exploring the economic impacts of the 202
 
 ![Petrol War Analysis Dashboard](assets/dashboard-preview.png)
 
-*Interactive dashboard showing oil price trends, country fuel comparisons, war timeline, and economic impact correlations. [View Live Demo](https://yourusername.github.io/petrol-war-analysis/)*
+*Interactive dashboard showing oil price trends, country fuel comparisons, war timeline, and economic impact correlations. [View Live Demo](https://Alyssaatmasava.github.io/petrol-war-analysis/)*
 > **📷 To add your dashboard screenshot:** Follow the instructions in `assets/README.md`
 ## �📊 Overview
 
