@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Petrol Prices — Impact of 2026 US-Iran War</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="../dashboard/styles.css">
+
+</head>
+<body>
+
+<div class="tooltip-custom" id="tooltip"></div>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-eyebrow">Data Analysis — Geopolitical Energy Report</div>
+    <h1>GLOBAL PETROL PRICES<br><span>US–IRAN WAR</span> IMPACT ANALYSIS 2026</h1>
+  </div>
+  <div class="header-meta">
+    <div class="status-live">ACTIVE CONFLICT</div>
+    <div>Dataset: Kaggle · 5 CSV Files</div>
+    <div>14 Countries · 20 War Events</div>
+    <div>Period: Feb – Mar 2026</div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="divider"></div>
+
+<!-- KPI ROW -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-label">Brent Crude (yyyy-mm-dd)</div>
+    <div class="kpi-value danger">$--</div>
+    <div class="kpi-sub">Pre-war: $-- · <span class="up">▲ --%</span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">WTI Crude (yyyy-mm-dd)</div>
+    <div class="kpi-value danger">$--</div>
+    <div class="kpi-sub">Pre-war: $-- · <span class="up">▲ --%</span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Avg Global Petrol Δ</div>
+    <div class="kpi-value warning">+--%</div>
+    <div class="kpi-sub">-- countries tracked</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Most Exposed Nation</div>
+    <div class="kpi-value danger">--</div>
+    <div class="kpi-sub">Retail price: <span class="up">▲ --%</span> since yyyy-mm-dd</div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="switchTab('crude')">Crude Oil Trend</button>
+  <button class="nav-tab" onclick="switchTab('countries')">Country Fuel Comparison</button>
+  <button class="nav-tab" onclick="switchTab('timeline')">War Timeline</button>
+  <button class="nav-tab" onclick="switchTab('economic-impact')">Economic Impact</button>
+  <button class="nav-tab" onclick="switchTab('conclusions')">Key Conclusions</button>
+</div>
+
+
+<!-- ===================== TAB: CRUDE OIL ===================== -->
+<div id="tab-crude" class="section active">
+    <div class="main-grid" style="margin-top:1px;">
+    <div class="panel">
+      <div class="panel-title">Brent & WTI Crude Oil — Daily Prices (Feb–Mar 2026)</div>
+      <div class="crude-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#ff4d1c"></div>Brent Crude</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#ffb347"></div>WTI Crude</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(255,255,255,0.2)"></div>Key War Events</div>
+      </div>
+      <div class="chart-wrap" style="height:280px;">
+        <canvas id="crudeChart"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Price Shock Summary</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="padding:16px;background:var(--surface2);border-left:3px solid var(--danger);">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;">PEAK BRENT SPIKE (yyyy-mm-dd)</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--danger);">+$--/day</div>
+          <div style="font-size:12px;color:var(--muted);">Largest single-day jump in the dataset (--% change)</div>
+        </div>
+        <div style="padding:16px;background:var(--surface2);border-left:3px solid var(--accent2);">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;">STRAIT OF HORMUZ EFFECT</div>
+          <div id="hormuzEffect" style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent2);">~--%</div>
+          <div id="hormuzEffectDesc" style="font-size:12px;color:var(--muted);">Since closure/restriction, Brent moved ...</div>
+        </div>
+        <div style="padding:16px;background:var(--surface2);border-left:3px solid var(--accent3);">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:6px;">BRENT-WTI SPREAD</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--accent3);">$--</div>
+          <div style="font-size:12px;color:var(--muted);">Pre-war spread was $-- </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB: COUNTRIES ===================== -->
+<div id="tab-countries" class="section">
+  <div class="main-grid" style="margin-top:1px;">
+    <div class="panel">
+      <div class="panel-title">Retail Petrol Price — Pre-War vs Mar 7, 2026 (USD/Litre)</div>
+      <div class="chart-wrap" style="height:340px;">
+        <canvas id="countryChart"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">% Change Since Pre-War Baseline</div>
+      <div class="country-bars" id="countryBars"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB: TIMELINE ===================== -->
+<div id="tab-timeline" class="section">
+  <div class="second-grid" style="margin-top:1px;">
+    <div class="panel" style="grid-column:1/2;">
+      <div class="panel-title">US–Iran Conflict Timeline</div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+    <div class="panel" style="grid-column:2/3;">
+      <div class="panel-title">Oil Price Response to Events</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="eventChart"></canvas>
+      </div>
+    </div>
+    <div class="panel" style="grid-column:3/4;">
+      <div class="panel-title">Event Severity Distribution</div>
+      <div class="chart-wrap" style="height:160px;margin-bottom:20px;">
+        <canvas id="severityChart"></canvas>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);line-height:2;">
+        <div>🔴 Critical (Military Strike) — <span style="color:var(--danger)">-- events</span></div>
+        <div>🟠 High (Blockade/Seizure) — <span style="color:var(--accent)">-- events</span></div>
+        <div>🟡 Medium (Sanctions/Diplomacy) — <span style="color:var(--accent2)">-- events</span></div>
+        <div>⚪ Low (Statement/Warning) — <span style="color:var(--muted)">-- events</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===================== TAB: ECONOMIC IMPACT ===================== -->
+<div id="tab-economic-impact" class="section">
+  <div class="main-grid" style="margin-top:1px;">
+    <div class="panel">
+      <div class="panel-title">GDP Impact — % Change Due to War</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="gdpImpactChart"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Stock Market Impact — % Change</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="stockImpactChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="main-grid" style="margin-top:20px;">
+    <div class="panel">
+      <div class="panel-title">Oil Import % vs GDP Impact Correlation</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="oilImportGDPChart"></canvas>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Oil Import % vs Stock Market Impact Correlation</div>
+      <div class="chart-wrap" style="height:300px;">
+        <canvas id="oilImportStockChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="insights-grid" style="margin-top:20px;margin-bottom:0;">
+    <div class="insight-card">
+      <div class="insight-tag tag-critical">Correlation Finding #1</div>
+      <div class="insight-headline">OIL IMPORT DEPENDENCY PREDICTS ECONOMIC VULNERABILITY</div>
+      <div class="insight-body">
+        Statistical analysis reveals strong correlations between oil import dependency and economic impact severity. Countries importing <strong>80%+</strong> of their oil experienced <strong>2–2.5%</strong> GDP declines, while those with lower dependency (<strong>40%</strong>) saw minimal impact. <strong>Spearman ρ = -0.554</strong> (p = 0.021) indicates this relationship is statistically significant.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-macro">Market Finding #2</div>
+      <div class="insight-headline">STOCK MARKETS REFLECT OIL DEPENDENCY PATTERNS</div>
+      <div class="insight-body">
+        Stock market performance closely mirrors oil import dependency levels. High-dependency nations suffered <strong>4–6%</strong> market declines, while low-dependency producers like Saudi Arabia and UAE saw minimal losses. The correlation <strong>ρ = -0.411</strong> (p = 0.101) suggests market sentiment factors heavily into the economic transmission mechanism.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-opportunity">Policy Finding #3</div>
+      <div class="insight-headline">FUEL PRICE INCREASES AMPLIFIED BY IMPORT DEPENDENCY</div>
+      <div class="insight-body">
+        Retail petrol prices rose most dramatically in import-dependent economies, with increases ranging from <strong>20–66%</strong> compared to stable or minimal changes in self-sufficient markets. The correlation <strong>ρ = -0.540</strong> (p = 0.057) highlights how global oil shocks translate into domestic inflation through import channels.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-forecast">Strategic Implication #4</div>
+      <div class="insight-headline">ENERGY SECURITY DETERMINES CRISIS RESILIENCE</div>
+      <div class="insight-body">
+        The 2026 conflict exposed fundamental vulnerabilities in global energy supply chains. Nations with diversified energy portfolios or domestic production capacity weathered the storm far better than import-reliant economies. <strong>Real-world implication:</strong> energy independence emerges as a critical national security priority in an era of geopolitical instability.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TAB: CONCLUSIONS ===================== -->
+<div id="tab-conclusions" class="section">
+  <div class="insights-grid" style="margin-top:1px;margin-bottom:0;">
+    <div class="insight-card">
+      <div class="insight-tag tag-critical">Critical Finding #1</div>
+      <div class="insight-headline">DEVELOPING NATIONS ABSORB DISPROPORTIONATE SHOCK</div>
+      <div class="insight-body">
+        Developing nations with high oil import dependency saw retail petrol prices rise <strong>40–60%</strong> since war onset — compared to a <strong>10–25%</strong> rise in developed economies with lower dependency. This divergence is driven by currency depreciation, import reliance, and reduced subsidy capacity. <strong>Real-world implication:</strong> policymakers in emerging markets face a stark choice between protecting foreign reserves and subsidising fuel.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-macro">Macro Finding #2</div>
+      <div class="insight-headline">STRAIT OF HORMUZ REMAINS THE GLOBAL CHOKEPOINT</div>
+      <div class="insight-body">
+        The threat of Strait of Hormuz closure drove significant crude price spikes. Despite naval presence, <strong>market sentiment alone</strong> — before any actual disruption — was sufficient to trigger substantial price jumps. <strong>Real-world implication:</strong> energy infrastructure investment and alternative routing (Suez bypass, pipeline diversification) are now strategic priorities.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-opportunity">Strategic Finding #3</div>
+      <div class="insight-headline">RUSSIA & GULF PRODUCERS EMERGE AS UNEXPECTED WINNERS</div>
+      <div class="insight-body">
+        Major oil producers not subject to sanctions are benefiting from elevated prices. At current Brent levels, producers with low break-even costs earn substantial excess margins. <strong>Real-world implication:</strong> geopolitical conflicts create asymmetric commodity windfalls; portfolio diversification into energy assets becomes attractive under sustained conflict scenarios.
+      </div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag tag-forecast">Forward Outlook #4</div>
+      <div class="insight-headline">PRICE TRAJECTORY HINGES ON 3 BINARY SCENARIOS</div>
+      <div class="insight-body">
+        <strong>Scenario A (Ceasefire):</strong> Brent retraces to pre-conflict levels. Retail prices lag by ~4 weeks. <br>
+        <strong>Scenario B (Prolonged conflict, no Hormuz closure):</strong> Brent stabilises at elevated levels. Supply rerouting absorbs some shock. <br>
+        <strong>Scenario C (Hormuz closure):</strong> Brent surges significantly. Global recession risk elevated. <br>
+        <strong>Implication:</strong> Current market pricing reflects moderate risk assumptions.
+      </div>
+    </div>
+  </div>
+  <!-- Bottom conclusion bar -->
+  <div style="margin:1px 48px 48px;background:var(--surface);border:1px solid var(--border);padding:24px 32px;display:flex;align-items:center;gap:32px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);line-height:1;flex-shrink:0;">BOTTOM LINE</div>
+    <div style="width:1px;height:60px;background:var(--border);flex-shrink:0;"></div>
+    <div style="font-size:14px;color:var(--text);line-height:1.7;">
+      The 2026 US–Iran conflict has exposed deep structural vulnerabilities in global energy supply chains. Developing nations face a compounding crisis of inflation and currency depreciation. The data clearly shows that <strong style="color:var(--accent);">geographic proximity to the conflict does not determine economic exposure — oil import dependency and FX vulnerability do.</strong> Policy responses must differentiate between nations with fiscal buffers and those without.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    Data Source: Kaggle — "Global Petrol Prices: Impact of 2026 US–Iran War" · Version 1 · 15.44 kB<br>
+    Files: petrol_prices_comparison.csv · crude_oil_daily.csv · war_timeline.csv · country_impact.csv · pros_cons_analysis.csv
+  </div>
+  <div class="footer-right">
+    <span style="color:var(--text);">Data Analyst Portfolio</span> · Mar 2026
+  </div>
+</div>
+
+<script src="../dashboard/script.js"></script>
+</body>
+</html>
