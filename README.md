@@ -2,13 +2,13 @@
 
 An interactive data analysis dashboard exploring the economic impacts of the 2026 US-Iran conflict on global oil markets and national economies.
 
-## � Dashboard Preview
+## Dashboard Preview
 
 ![Petrol War Analysis Dashboard](assets/dashboard-preview.png)
 
 *Interactive dashboard showing oil price trends, country fuel comparisons, war timeline, and economic impact correlations. [View Live Demo](https://alyssaatmasava.github.io/petrol_war_analysis/)*
 
-## �📊 Overview
+## 📊 Overview
 
 This project analyzes how geopolitical conflicts disrupt global energy markets, with a focus on:
 - Oil price volatility and supply chain disruptions
@@ -79,13 +79,6 @@ petrol_war_analysis/
    ```
    Open http://localhost:8000/petrol-war-dashboard.html
 
-6. **Add dashboard screenshot (optional):**
-   ```bash
-   # Take a screenshot of your running dashboard
-   # Save as assets/dashboard-preview.png
-   # See assets/README.md for detailed instructions
-   ```
-   
 ## 📈 Key Findings
 
 ### Oil Import Dependency Correlations
@@ -100,7 +93,7 @@ petrol_war_analysis/
 
 ## 📊 Data Sources
 
-- **Kaggle Dataset**: "Global Petrol Prices Impact of 2026 US-Iran War" by zkskhurram
+- **Kaggle Dataset**: "Global Petrol Prices Impact of 2026 US-Iran War" by zkskhurram(https://www.kaggle.com/datasets/zkskhurram/global-petrol-prices-impact-of-2026-us-iran-war/data)
 - **Custom Analysis**: Correlation studies and statistical modeling
 - **Time Period**: February-March 2026 conflict escalation
 
