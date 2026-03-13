@@ -93,7 +93,7 @@ petrol_war_analysis/
 
 ## 📊 Data Sources
 
-- **Kaggle Dataset**: "Global Petrol Prices Impact of 2026 US-Iran War" by zkskhurram(https://www.kaggle.com/datasets/zkskhurram/global-petrol-prices-impact-of-2026-us-iran-war/data)
+- **Kaggle Dataset**: ["Global Petrol Prices Impact of 2026 US-Iran War" by zkskhurram](https://www.kaggle.com/datasets/zkskhurram/global-petrol-prices-impact-of-2026-us-iran-war/data)
 - **Custom Analysis**: Correlation studies and statistical modeling
 - **Time Period**: February-March 2026 conflict escalation
 
