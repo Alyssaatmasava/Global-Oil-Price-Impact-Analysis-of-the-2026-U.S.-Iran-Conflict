@@ -6,7 +6,7 @@ An interactive data analysis dashboard exploring the economic impacts of the 202
 
 ![Petrol War Analysis Dashboard](assets/dashboard-preview.png)
 
-*Interactive dashboard showing oil price trends, country fuel comparisons, war timeline, and economic impact correlations. [View Live Demo]([https://alyssaatmasava.github.io/petrol_war_analysis/](https://alyssaatmasava.github.io/Global-Oil-Price-Impact-Analysis-of-the-2026-U.S.-Iran-Conflict/))*
+*Interactive dashboard showing oil price trends, country fuel comparisons, war timeline, and economic impact correlations. [View Live Demo](https://alyssaatmasava.github.io/Global-Oil-Price-Impact-Analysis-of-the-2026-U.S.-Iran-Conflict/)*
 
 ## 📊 Overview
 
